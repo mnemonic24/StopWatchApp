@@ -2,11 +2,9 @@ package com.example.tomori24.kotlintest
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import android.os.Handler
-import android.widget.ArrayAdapter
-import android.widget.ListView
+import android.widget.*
+
 class MainActivity : AppCompatActivity() {
 
     val handler = Handler()
@@ -68,15 +66,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun timeToText(time: Int = 0): String? {
-        return if (time < 0) {
-            null
-        } else if (time == 0) {
-            "00:00:00"
-        } else {
-            val h = time / 3600
-            val m = time % 3600 / 60
-            val s = time % 60
-            "%1$02d:%2$02d:%3$02d".format(h, m, s)
+        return when {
+            time < 0 -> null
+            time == 0 -> "00:00:00"
+            else -> {
+                val h = time / 3600
+                val m = time % 3600 / 60
+                val s = time % 60
+                "%1$02d:%2$02d:%3$02d".format(h, m, s)
+            }
         }
     }
 }
